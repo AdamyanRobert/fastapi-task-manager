@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtualenv
+Lib/
+Scripts/
+pyvenv.cfg
+
+# Pytest
+.pytest_cache/
+.coverage
+
+# IDEs
+.idea/
