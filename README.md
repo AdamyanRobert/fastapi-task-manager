@@ -32,9 +32,9 @@ PASSWORD=your_password
 
 docker-compose up --build
 
-🧪 Running Tests
+🧪 Running Unit Tests
 
-docker-compose exec app pytest --cov=src tests/
+docker-compose run --rm app pytest tests/unit/test_tasks.py -v  
 
 ⚠️ Notes
 
