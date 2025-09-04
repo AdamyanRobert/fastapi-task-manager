@@ -82,8 +82,7 @@ class TestGetTasks:
         assert response.json() == []
 
     def test_get_tasks_with_data(self, client, multiple_tasks, mock_repository):
-        tasks = multiple_tasks
-        mock_repository.select_tasks.return_value = tasks
+        mock_repository.select_tasks.return_value = multiple_tasks
 
         response = client.get("/tasks/")
 

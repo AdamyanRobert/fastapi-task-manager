@@ -47,17 +47,6 @@ def sample_task():
 
 
 @pytest.fixture
-def sample_task_dict():
-    task_id = uuid.uuid4()
-    return {
-        "id": task_id,
-        "title": "Test Task",
-        "description": "Test Description",
-        "status": "created"
-    }
-
-
-@pytest.fixture
 def multiple_tasks():
     return [
         TaskModel(
@@ -79,20 +68,3 @@ def multiple_tasks():
             status="completed"
         )
     ]
-
-
-@pytest.fixture
-def valid_task_data():
-    return {
-        "title": "New Task",
-        "description": "New Description"
-    }
-
-
-@pytest.fixture
-def update_task_data():
-    return {
-        "title": "Updated Task",
-        "description": "Updated Description",
-        "status": "in_progress"
-    }

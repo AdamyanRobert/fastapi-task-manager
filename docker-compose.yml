@@ -30,6 +30,7 @@ services:
         condition: service_healthy
     volumes:
       - .:/app
+      - /var/run/docker.sock:/var/run/docker.sock  # доступ к Docker для testcontainers
     command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 
 volumes:
