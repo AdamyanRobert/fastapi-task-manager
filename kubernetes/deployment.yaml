@@ -23,7 +23,7 @@ spec:
 
       containers:
         - name: fastapi
-          image: robertadamyan/fastapi-task-manager:46165c8
+          image: robertadamyan/fastapi-task-manager:35ff590
           imagePullPolicy: Always
           ports:
             - containerPort: 8000
