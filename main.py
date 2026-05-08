@@ -22,4 +22,4 @@ if __name__ == "__main__":
         reload=True
     )
 
-workflow_test = 5
+workflow_test = 10
