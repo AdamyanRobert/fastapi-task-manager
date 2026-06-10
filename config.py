@@ -3,6 +3,9 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 
+print("DB_HOST =", repr(Settings().DB_HOST))
+print("DB_PORT =", repr(Settings().DB_PORT))
+print("PSYCOPG URL =", Settings().DATABASE_URL_psycopg)
 
 class Settings(BaseSettings):
     DB_HOST: str
