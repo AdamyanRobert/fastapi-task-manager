@@ -4,28 +4,22 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent
 
 class Settings(BaseSettings):
-    DB_HOST: str
-    DB_PORT: int = 5432
-    POSTGRES_USER: str
-    POSTGRES_PASSWORD: str
-    POSTGRES_DB: str
+    DATABASE_URL: str  # Railway подставит автоматически
 
     @property
     def DATABASE_URL_asyncpg(self) -> str:
-        return (
-            f"postgresql+asyncpg://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}"
-            f"@{self.DB_HOST}:{self.DB_PORT}/{self.POSTGRES_DB}"
-        )
+        url = self.DATABASE_URL
+        # Railway может отдать postgres:// — заменяем
+        return url.replace("postgresql://", "postgresql+asyncpg://", 1)\
+                  .replace("postgres://", "postgresql+asyncpg://", 1)
 
     @property
     def DATABASE_URL_psycopg(self) -> str:
-        return (
-            f"postgresql+psycopg2://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}"
-            f"@{self.DB_HOST}:{self.DB_PORT}/{self.POSTGRES_DB}"
-        )
+        url = self.DATABASE_URL
+        return url.replace("postgresql://", "postgresql+psycopg2://", 1)\
+                  .replace("postgres://", "postgresql+psycopg2://", 1)
 
     model_config = SettingsConfigDict(env_file=BASE_DIR / ".env")
-
 
 settings = Settings()
 
